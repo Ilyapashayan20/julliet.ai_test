@@ -1,0 +1,46 @@
+{
+    "rewrites": [
+        {
+            "source": "/blog",
+            "destination": "https://jullietai.superblog.cloud/"
+        },
+        {
+            "source": "/blog/(.*?)([.]\\w{2,5})(\\?[^/]+)?",
+            "destination": "https://jullietai.superblog.cloud/$1$2$3"
+        },
+        {
+            "source": "/blog/([\\S\\s]+)",
+            "destination": "https://jullietai.superblog.cloud/$1/"
+        },
+        {
+            "source": "/_elderjs/svelte/(.*?)([.]\\w{2,5})(\\?[^/]+)?",
+            "destination": "https://jullietai.superblog.cloud/_elderjs/svelte/$1$2$3"
+        },
+        {
+            "source": "/_elderjs/svelte/([\\S\\s]+)",
+            "destination": "https://jullietai.superblog.cloud/_elderjs/svelte/$1/"
+        },
+        {
+            "source": "/.netlify/functions/(.*?)([.]\\w{2,5})(\\?[^/]+)?",
+            "destination": "https://jullietai.superblog.cloud/.netlify/functions/$1$2$3"
+        },
+        {
+            "source": "/.netlify/functions/([\\S\\s]+)",
+            "destination": "https://jullietai.superblog.cloud/.netlify/functions/$1/"
+        },
+        {
+            "source": "/register",
+            "destination": "/login"
+        },
+        {
+            "source": "/",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "empresas.julliet.ai"
+                }
+            ],
+            "destination": "/companies"
+        }
+    ]
+}

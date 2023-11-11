@@ -1,0 +1,1 @@
+export { getDocumentsByUser } from './documents';

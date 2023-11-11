@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__next {
+  min-height: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+.editor-wrapper h1 {
+  font-size: 2rem !important;
+}
+
+.editor-wrapper h2 {
+  font-size: 1.5rem !important;
+}
+
+.editor-wrapper h3 {
+  font-size: 1.20rem !important;
+}
+
+.editor-wrapper blockquote {
+  border-left: 4px solid #e2e8f0;
+  padding-left: 1rem;
+}
+
+.editor-wrapper ul {
+  list-style: disc;
+  padding-left: 1rem;
+}
+
+.editor-wrapper ol {
+  list-style: decimal;
+  padding-left: 1rem;
+}
+
+.editor-wrapper code {
+    opacity: 0.8;
+    background-color: #f7fafc;
+    color: #e53e3e;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+}
+
+
+.suggestion-span {
+  color: #A0AEC0;
+}
+
+
+:root {
+  --chakra-fonts-body: 'Roboto', 'sans-serif';
+}
+
+
+.chakra-modal__content-container {
+    z-index: 21474831001 !important;
+}
+
+
+
+.chat-box ul {
+  list-style: none;
+}
+
+
+.chat-box li:before {
+  content: '👉 ';
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.chat-box h1 {
+  font-size: 1.2rem;
+}
+
+.chat-box h2 {
+  font-size: 1.1rem;
+}
+
+.chat-box h3 {
+  font-size: 1.05rem;
+}
+
+
+.toolbar__editor {
+  border-bottom: 1px solid #eee !important;
+  border-top: 1px solid #eee !important;
+  padding: 5px 15px !important;
+  max-width: 100%;
+  margin: 0 !important;
+  gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toolbar__editor--button {
+  margin-left: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .toolbar__editor {
+    padding: 5px 4rem !important;
+  }
+}
