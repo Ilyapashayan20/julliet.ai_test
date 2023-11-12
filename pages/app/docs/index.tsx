@@ -20,7 +20,8 @@ import {
   useBreakpointValue,
   ModalOverlay
 } from '@chakra-ui/react';
-import * as React from 'react';
+
+import { useEffect , useState } from 'react';
 import {
   ColumnButton,
   ColumnHeader,
@@ -43,14 +44,14 @@ import DeleteModal from '@/components/app/features/docs/DeleteModal';
 
 export const App = () => {
   const {isOpen, onOpen, onClose} = useDisclosure();
-  const [sidebarIsScrolled, setSidebarIsScrolled] = React.useState(false);
-  const [page, setPage] = React.useState(1);
-  const [query, setQuery] = React.useState('');
+  const [sidebarIsScrolled, setSidebarIsScrolled] = useState(false);
+  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState('');
   const debouncedQuery = useDebounce(query, 500);
   const router = useRouter();
   const {user} = useUser();
   const docDetailStore = useDocDetailStore();
-  const [allDocuments, setAllDocuments] = React.useState<IDocument[]>([]);
+  const [allDocuments, setAllDocuments] = useState<IDocument[]>([]);
 
   let {data, isLoading} = useDocumentsByUser({
     userId: user?.id as string,
@@ -64,7 +65,7 @@ export const App = () => {
 
   const {documents, total, hasMore} = data || {};
 
-  React.useEffect(() => {
+useEffect(() => {
     if (documents) {
       if (!docDetailStore.document) {
         docDetailStore.setDocument(documents[0]);
@@ -72,7 +73,7 @@ export const App = () => {
     }
   }, [documents]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (documents) {
       if (page > 1) {
         setAllDocuments([...allDocuments, ...documents]);
@@ -82,7 +83,7 @@ export const App = () => {
     }
   }, [documents, page]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isLoading && data && documents?.length === 0) {
       router.push('/app/docs/assistant');
     }
@@ -98,7 +99,7 @@ export const App = () => {
   // Esto esta mal, no entiendo porque el useBreakpointValue no funciona bien
   const isDesktop = useBreakpointValue({base: false, md: true});
 
-  React.useEffect(() => {
+ useEffect(() => {
     if (!isDesktop) {
       docDetailStore.setShowSidebar(true);
     } else {
@@ -196,8 +197,8 @@ export const ColumnSidebar = (props: ColumnSidebarProps) => {
 
   const bg = mode('gray.100', 'gray.700');
   const {isOpen, onOpen, onClose} = useDisclosure();
-  const [overlay, setOverlay] = React.useState(<Overlay />);
-  const [toDeleteId, setToDeleteId] = React.useState<string | number>('');
+  const [overlay, setOverlay] = useState(<Overlay />);
+  const [toDeleteId, setToDeleteId] = useState<string | number>('');
   const docDetailStore = useDocDetailStore();
 
   const {mutateAsync: deleteDocument} = useDeleteDocument();

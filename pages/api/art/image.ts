@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { SupabaseClient } from '@supabase/supabase-js'; // Import the correct Supabase client library
 import fetch from 'node-fetch';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 import { withTokenAuth } from '@/lib/utils/decorators';
 import {  OpenAI } from 'openai';
@@ -12,8 +13,8 @@ import { generateAndSaveArt, getArtsByUserid } from '@/lib/services/art';
 const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 
 const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
+  req: VercelRequest,
+  res: VercelResponse,
   supabase: SupabaseClient,
   user: any
 ) => {
@@ -30,8 +31,8 @@ const handler = async (
 };
 
 const getImagesHandler = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
+  req: VercelRequest,
+  res: VercelResponse,
   supabase: SupabaseClient,
   user: any
 ) => {
@@ -45,8 +46,8 @@ const getImagesHandler = async (
 };
 
 const createArtHandler = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
+  req: VercelRequest,
+  res: VercelResponse,
   supabase: SupabaseClient,
   user: any
 ) => {

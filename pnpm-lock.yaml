@@ -146,6 +146,9 @@ dependencies:
   '@vercel/analytics':
     specifier: ^0.1.4
     version: 0.1.4(react@18.2.0)
+  '@vercel/node':
+    specifier: ^3.0.9
+    version: 3.0.9
   '@vercel/og':
     specifier: ^0.0.27
     version: 0.0.27
@@ -3091,7 +3094,7 @@ packages:
       detect-libc: 2.0.2
       https-proxy-agent: 5.0.1
       make-dir: 3.1.0
-      node-fetch: 2.6.7
+      node-fetch: 2.6.9
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
@@ -3340,7 +3343,7 @@ packages:
     dependencies:
       https-proxy-agent: 5.0.1
       mkdirp: 0.5.6
-      node-fetch: 2.6.7
+      node-fetch: 2.6.9
       progress: 2.0.3
       proxy-from-env: 1.1.0
       which: 2.0.2
