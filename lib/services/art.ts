@@ -119,8 +119,8 @@ export const saveImage = async ({
 
     // Upload image to Supabase Storage and get path
     const { data: storageData, error: storageError } = await supabase.storage
-      .from('Arts')
-      .upload(`images/${user.id}/${Date.now()}.jpg`, imageBuffer);
+      .from('images')
+      .upload(`arts/${user.id}/${Date.now()}.jpg`, imageBuffer);
 
     if (storageError) {
       throw new Error(`Error uploading image to storage: ${storageError.message}`);
@@ -134,7 +134,7 @@ export const saveImage = async ({
       .upsert([
         {
           user_id: user.id,
-          path: imageUrl,
+          path: path,
         },
       ]);
 
@@ -142,7 +142,7 @@ export const saveImage = async ({
       throw new Error(`Error upserting image information: ${upsertError.message}`);
     }
 
-    return imageUrl;
+    return path;
   } catch (error) {
     console.error('Error in saveImage:', error);
     throw error;

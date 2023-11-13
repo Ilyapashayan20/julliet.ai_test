@@ -67,12 +67,12 @@ const createArtHandler = async (
       size: payload.size,
     });
 
-    await saveImage({ supabase, user, imageUrl });
+     const path =   await saveImage({ supabase, user, imageUrl });
  
 
 
 
-    res.status(200).json(imageUrl);
+    res.status(200).json(path);
     
   } catch (error: any) {
     console.error('Error in createImageHandler:', error);
