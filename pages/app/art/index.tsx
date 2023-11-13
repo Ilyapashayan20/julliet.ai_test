@@ -180,7 +180,7 @@ export default function ChatPage() {
                     width={380}
                     height={380}
                     src={
-                      process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL +
+                      // process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL +
                       gneratedImage
                     }
                     loading="lazy"
@@ -221,7 +221,7 @@ export default function ChatPage() {
                         width={320}
                         height={320}
                         src={
-                          process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL +
+                          // process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL +
                           art.path
                         }
                         alt={art.alt}

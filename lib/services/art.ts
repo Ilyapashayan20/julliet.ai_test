@@ -80,30 +80,30 @@ export const generateAndSaveArt = async ({
       const imageResponse = await fetch(imageUrl);
       const imageBuffer = await imageResponse.buffer();
 
-      const { data: storageData, error: storageError } = await supabase.storage
-        .from('Arts')
-        .upload(`images/${user.id}/${Date.now()}.jpg`, imageBuffer);
+      // const { data: storageData, error: storageError } = await supabase.storage
+      //   .from('Arts')
+      //   .upload(`images/${user.id}/${Date.now()}.jpg`, imageBuffer);
 
-      if (storageError) {
-        throw storageError;
-      }
+      // if (storageError) {
+      //   throw storageError;
+      // }
 
-      const path = storageData.path;
+      // const path = storageData.path;
 
       const { data: upsertData, error: upsertError } = await supabase
         .from('arts')
         .upsert([
           {
             user_id: user.id,
-            path
+            path: imageUrl 
           }
         ]);
 
-      if (upsertError) {
-        throw upsertError;
-      }
+      // if (upsertError) {
+      //   throw upsertError;
+      // }
 
-      return path;
+      return imageUrl;
     } else {
       throw new Error(`OpenAI API error: ${response}`);
     }
