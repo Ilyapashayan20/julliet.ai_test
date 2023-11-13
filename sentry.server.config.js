@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production' && SENTRY_DSN) {
       SENTRY_DSN ||
       'https://e83ea70d24fc4209bef51552f1cb2027@o4504067717201920.ingest.sentry.io/4504357841928192',
     // Adjust this value in production, or use tracesSampler for greater control
-    tracesSampleRate: 0.1
+    tracesSampleRate: 1.0
     // ...
     // Note: if you want to override the automatic release value, do not set a
     // `release` value here - use the environment variable `SENTRY_RELEASE`, so

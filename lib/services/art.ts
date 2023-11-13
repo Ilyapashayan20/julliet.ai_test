@@ -77,8 +77,8 @@ export const generateAndSaveArt = async ({
         throw new Error('Image URL not found in the response');
       }
 
-      const imageResponse = await fetch(imageUrl);
-      const imageBuffer = await imageResponse.buffer();
+      // const imageResponse = await fetch(imageUrl);
+      // const imageBuffer = await imageResponse.buffer();
 
       // const { data: storageData, error: storageError } = await supabase.storage
       //   .from('Arts')
@@ -90,14 +90,14 @@ export const generateAndSaveArt = async ({
 
       // const path = storageData.path;
 
-      const { data: upsertData, error: upsertError } = await supabase
-        .from('arts')
-        .upsert([
-          {
-            user_id: user.id,
-            path: imageUrl 
-          }
-        ]);
+      // const { data: upsertData, error: upsertError } = await supabase
+      //   .from('arts')
+      //   .upsert([
+      //     {
+      //       user_id: user.id,
+      //       path: imageUrl 
+      //     }
+      //   ]);
 
       // if (upsertError) {
       //   throw upsertError;
