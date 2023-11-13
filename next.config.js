@@ -24,6 +24,8 @@ const nextConfig = {
 
   },
   sentry: {
+    disableServerWebpackPlugin: true,
+disableClientWebpackPlugin: true,
     // Use `hidden-source-map` rather than `source-map` as the Webpack `devtool`
     // for client-side builds. (This will be the default starting in
     // `@sentry/nextjs` version 8.0.0.) See

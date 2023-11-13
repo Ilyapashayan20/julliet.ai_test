@@ -20,15 +20,7 @@ import {
 
 export const ColumnHeader = (props: FlexProps) => (
   <Flex
-    minH="12"
-    position="sticky"
-    zIndex={1}
-    top="0"
-    px="3"
-    align="center"
-    bg={useColorModeValue('white', 'gray.800')}
-    color={useColorModeValue('gray.700', 'white')}
-    {...props}
+
   />
 );
 
