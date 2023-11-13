@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
 import { withTokenAuth } from '@/lib/utils/decorators';
 import {  OpenAI } from 'openai';
 import { getDocumentById } from '@/lib/services/documents';
-import { generateAndSaveArt, getArtsByUserid } from '@/lib/services/art';
+import { generateArt, getArtsByUserid, saveImage } from '@/lib/services/art';
 
 
 
@@ -59,13 +59,17 @@ const createArtHandler = async (
       return;
     }
 
-    const imageUrl = await generateAndSaveArt({
+    const imageUrl = await generateArt({
       supabase,
       user,
       prompt: payload.prompt,
       n: payload.n,
       size: payload.size,
     });
+
+    await saveImage({ supabase, user, imageUrl });
+ 
+
 
 
     res.status(200).json(imageUrl);

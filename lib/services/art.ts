@@ -26,7 +26,7 @@ export const getArtsByUserid = async ({
   return response;
 };
 
-export const generateAndSaveArt = async ({
+export const generateArt = async ({
   supabase,
   user,
   prompt,
@@ -98,3 +98,53 @@ export const generateAndSaveArt = async ({
 
 
 
+export const saveImage = async ({
+  supabase,
+  user,
+  imageUrl,
+}: {
+  supabase: SupabaseClient;
+  user: any;
+  imageUrl: string;
+}) => {
+  try {
+    // Check if the image URL is available
+    if (!imageUrl) {
+      throw new Error('Image URL not found in the response');
+    }
+
+    // Fetch image asynchronously
+    const imageResponse = await fetch(imageUrl);
+    const imageBuffer = await imageResponse.buffer();
+
+    // Upload image to Supabase Storage and get path
+    const { data: storageData, error: storageError } = await supabase.storage
+      .from('Arts')
+      .upload(`images/${user.id}/${Date.now()}.jpg`, imageBuffer);
+
+    if (storageError) {
+      throw new Error(`Error uploading image to storage: ${storageError.message}`);
+    }
+
+    const path = storageData.path;
+
+    // Upsert image information to the 'arts' table
+    const { error: upsertError } = await supabase
+      .from('arts')
+      .upsert([
+        {
+          user_id: user.id,
+          path: imageUrl,
+        },
+      ]);
+
+    if (upsertError) {
+      throw new Error(`Error upserting image information: ${upsertError.message}`);
+    }
+
+    return imageUrl;
+  } catch (error) {
+    console.error('Error in saveImage:', error);
+    throw error;
+  }
+};
