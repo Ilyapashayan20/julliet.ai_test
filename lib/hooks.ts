@@ -1,3 +1,4 @@
+
 import { IChatMessage, IDocument, IIntegration } from '@/types';
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import {
@@ -49,13 +50,11 @@ interface PaginatedQuery extends UseQueryOptions {
   query?: string;
 }
 
-export interface useDocumentsByUserProps extends PaginatedQuery {
+export interface UseDocumentsByUserProps extends PaginatedQuery {
   userId: string;
 }
 
-export const useDocumentsByUser = (props: useDocumentsByUserProps) => {
-  const supabase = createBrowserSupabaseClient();
-
+export const useDocumentsByUser = (props: UseDocumentsByUserProps) => {
   const { page, pageSize, sortBy, ascending, query, userId, enabled } = props;
 
   return useQuery({
