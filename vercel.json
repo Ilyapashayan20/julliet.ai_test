@@ -1,10 +1,7 @@
 {
     "functions": {
-      "api/art/image.ts": {
-        "memory": 3008,
-        "maxDuration": 150
-      },
-      "api/*.ts": {
+      
+      "pages/api/art/image.ts": {
         "memory": 3008,
         "maxDuration": 100
       }
