@@ -44,6 +44,7 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
+import { GoKebabVertical } from 'react-icons/go';
 import { MdAddCircle, MdChatBubbleOutline, MdSend } from 'react-icons/md';
 import ReactMarkdown from 'react-markdown';
 import { v4 as uuidv4 } from 'uuid';
@@ -419,7 +420,7 @@ const ChatBox = ({
                           _hover={{ bg: 'transparent' }}
                           _expanded={{ bg: 'transparent' }}
                           as={Button}
-                          // rightIcon={<GoKebabVertical />}
+                          rightIcon={<GoKebabVertical />}
                         />
                         <MenuList
                           bg="white"
