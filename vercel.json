@@ -4,6 +4,10 @@
       "pages/api/art/image.ts": {
         "memory": 3008,
         "maxDuration": 100
+      },
+      "pages/api/suggestions/v101/new": {
+        "memory": 3008,
+        "maxDuration": 150
       }
     },
     "rewrites": [

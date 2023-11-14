@@ -61,10 +61,10 @@ const postHandler = async (
     document: data.document as IDocument
   });
 
-  await sendMessage({
-    channel: '#notifications',
-    text: `*Nuevo Documento Creado*\n*Email:* ${user.email}\n*Plantilla*: ${document.type}\n*Titulo*: ${document.title}\n*Generation Mode*: ${document.generation_mode}\n*Contexto*: ${document.context}`
-  });
+  // await sendMessage({
+  //   channel: '#notifications',
+  //   text: `*Nuevo Documento Creado*\n*Email:* ${user.email}\n*Plantilla*: ${document.type}\n*Titulo*: ${document.title}\n*Generation Mode*: ${document.generation_mode}\n*Contexto*: ${document.context}`
+  // });
 
   res.status(200).json(document);
 };
