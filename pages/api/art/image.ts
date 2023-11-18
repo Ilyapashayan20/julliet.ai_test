@@ -2,15 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { SupabaseClient } from '@supabase/supabase-js'; // Import the correct Supabase client library
 import fetch from 'node-fetch';
 
-
 import { withTokenAuth } from '@/lib/utils/decorators';
-import {  OpenAI } from 'openai';
-import { getDocumentById } from '@/lib/services/documents';
 import { generateArt, getArtsByUserid, saveImage } from '@/lib/services/art';
-
-
-
-const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 
 const handler = async (
   req: NextApiRequest,
@@ -37,7 +30,11 @@ const getImagesHandler = async (
   user: any
 ) => {
   try {
-    const arts = await getArtsByUserid({ supabase, userId: user.id });
+    const arts = await getArtsByUserid({
+      supabase,
+      userId: user.id,
+      page: Number(req.query.page)
+    });
     res.status(200).json(arts);
   } catch (error) {
     console.error('Error in getImagesHandler:', error);
@@ -63,23 +60,25 @@ const createArtHandler = async (
       supabase,
       user,
       prompt: payload.prompt,
-      n: payload.n,
-      size: payload.size,
+      size: payload.size
     });
 
-     const path =   await saveImage({ supabase, user, imageUrl });
- 
-
-
+    const path = await saveImage({
+      supabase,
+      user,
+      imageUrl,
+      description: payload.prompt
+    });
 
     res.status(200).json(path);
-    
   } catch (error: any) {
     console.error('Error in createImageHandler:', error);
     if (error.limit_exceeded) {
-      res.status(422).json({message: error.message, errorCode: 'LIMIT_EXCEEDED' });
+      res
+        .status(422)
+        .json({ message: error.message });
     } else {
-      res.status(500).json({ error: error.message});
+      res.status(500).json({ error: error.message });
     }
   }
 };

@@ -65,6 +65,7 @@ export interface ISubscription {
     next_bill_date: string;
     cancel_url?: string;
     update_url?: string;
+    created_at?: any;
 }
 
 export interface User {
