@@ -166,7 +166,7 @@ export function Header() {
                 <NavLink href="/login">Iniciar sesión</NavLink>
               </div>
             )}
-            {user ? (
+            {!user ? (
               <Button
                 href="/app/docs"
                 color="violet"

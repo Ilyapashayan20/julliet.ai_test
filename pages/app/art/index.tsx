@@ -25,6 +25,7 @@ import { FaEye } from 'react-icons/fa';
 import { HiOutlineDownload } from 'react-icons/hi';
 import { formatDistanceToNow } from 'date-fns';
 import { useInView } from 'react-intersection-observer';
+import { CustomButton } from '@/components/ui/Step/CustomButton';
 
 export default function ChatPage() {
   const { user, subscription } = useUser();
@@ -196,6 +197,7 @@ export default function ChatPage() {
                   >
                     Generar
                   </Button>
+                  <CustomButton  className='bg-yellow-400' />
                   <span
                     className={`text-base text-white h-10 flex items-center rounded-lg px-4 bg-[#7c3aed]`}
                   >

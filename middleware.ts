@@ -14,7 +14,7 @@ export async function middleware(req: NextRequest) {
   } = await supabase.auth.getSession();
 
   // // Check auth condition
-  if (session?.user) {
+  if (!session?.user) {
     if (req.nextUrl.pathname === '/') {
       const redirectUrl = req.nextUrl.clone();
       redirectUrl.pathname = '/app/docs';
